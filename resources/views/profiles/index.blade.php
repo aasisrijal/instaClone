@@ -8,10 +8,10 @@
         </div>
         <div class="col-9 pt-5">
             <div class="d-flex justify-content-between align-items-baseline"><h1>{{ $user->username }}</h1>
-                  <a href="#">Add New Post</a>  
+                  <a href="/post/create">Add New Post</a>  
             </div>
             <div class="d-flex">
-                <div class="pr-4"><strong>200</strong> posts</div>
+                <div class="pr-4"><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div class="pr-4"><strong>11k</strong> followers</div>
                 <div class="pr-4"><strong>500</strong> following</div>
                 </div>
@@ -23,17 +23,14 @@
     </div>
 
     <div class="row pt-4">
-        <div class="col-4">
-            <img src="https://n.nordstrommedia.com/id/sr3/f51ce03e-2a6b-4f5b-8680-78db04a7a821.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196" class="w-100">
+       @foreach($user->posts as $post)
+        <div class="col-4 pb-4">
+            <a href="/post/{{ $post->id }}">
+                <img src="/storage/{{ $post->image }}" class="w-100">
+            </a>
         </div>
-        <div class="col-4">
-            <img src="https://n.nordstrommedia.com/id/sr3/3d7791af-63df-4c34-8278-50572ebe9484.jpeg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838" class="w-100">
-        </div>    
+        @endforeach
         
-        <div class="col-4">
-            <img src="https://n.nordstrommedia.com/id/sr3/f51ce03e-2a6b-4f5b-8680-78db04a7a821.jpeg?crop=pad&pad_color=FFF&format=jpeg&w=780&h=1196" class="w-100">
-        
-        </div>
     </div>
     
 </div>
